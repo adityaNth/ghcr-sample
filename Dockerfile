@@ -1,11 +1,12 @@
-# Use the official Nginx image from Docker Hub as a base image
-FROM nginx:latest
+FROM ubuntu:20.04
 
-# Optional: Copy custom configuration file (if you have any)
-# COPY nginx.conf /etc/nginx/nginx.conf
+# Update package lists
+RUN apt-get update
+RUN apt install -y curl && apt install -y bash
+RUN curl -sL https://deb.nodesource.com/setup_18.x -o /tmp/nodesource_setup.sh
+RUN bash /tmp/nodesource_setup.sh
+RUN apt-get update
+RUN apt install nodejs -y && apt install -y git
 
-# Expose port 80 and 443 to the outside once the container has launched
-EXPOSE 80 443
-
-# Start Nginx and keep it running in the foreground
-CMD ["nginx", "-g", "daemon off;"]
+# Set the default command to execute when the container starts
+CMD ["bash"]
