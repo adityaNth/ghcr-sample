@@ -10,7 +10,7 @@ on:
   pull_request:
 
 env:
-  IMAGE_NAME: ubuntu_test_image_01
+  IMAGE_NAME: ubuntu_test_image
 
 jobs:
   push:
@@ -32,7 +32,7 @@ jobs:
 
       - name: Push image
         run: |
-          IMAGE_ID=ghcr.io/sadasdasd/$IMAGE_NAME
+          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
           # Normalize the image name to lower case
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
 
