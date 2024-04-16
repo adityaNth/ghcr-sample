@@ -10,7 +10,7 @@ on:
   pull_request:
 
 env:
-  IMAGE_NAME: ubuntu_test_image
+  IMAGE_NAME: ubuntu_test_image_01
 
 jobs:
   push:
